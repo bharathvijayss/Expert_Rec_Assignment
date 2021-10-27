@@ -39,7 +39,7 @@ import { OAuth2CallbackComponent } from './oauth2-callback/oauth2-callback.compo
           authorize: {
             endpoint: 'https://accounts.google.com/o/oauth2/v2/auth',
             responseType: NbOAuth2ResponseType.TOKEN,
-            scope: 'https://www.googleapis.com/auth/userinfo.profile',
+            scope: 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
             //Need to change redirectURI
             redirectUri: 'http://localhost:4200/callback', 
           },

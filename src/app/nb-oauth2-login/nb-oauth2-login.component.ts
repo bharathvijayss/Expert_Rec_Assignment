@@ -21,11 +21,10 @@ export class NbOAuth2LoginComponent  implements OnDestroy {
         this.token = null;
         if (token && token.isValid()) {
           this.token = token.getPayload().access_token;
-          localStorage.setItem('accessToken',this.token.toString());
         }
       });
       
-      if(!(localStorage.accessToken === undefined)){
+      if(!(localStorage["auth_app_token"] === undefined)){
         this.router.navigate(["viewProfile"]);
       }
   }
