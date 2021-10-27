@@ -8,7 +8,7 @@ import { NbCardModule, NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 import { HttpClientModule } from '@angular/common/http';
-import { NbOAuth2AuthStrategy, NbAuthModule, NbOAuth2ResponseType } from '@nebular/auth';
+import { NbOAuth2AuthStrategy, NbAuthModule, NbOAuth2ResponseType, NbAuthJWTToken } from '@nebular/auth';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { AuthGuard } from './auth-guard.service';
 import { NbOAuth2LoginComponent } from './nb-oauth2-login/nb-oauth2-login.component';
@@ -46,7 +46,7 @@ import { OAuth2CallbackComponent } from './oauth2-callback/oauth2-callback.compo
           redirect: {
             success: '/viewProfile',
             failure: null,
-          },
+          }
         })
       ],
       forms: {},

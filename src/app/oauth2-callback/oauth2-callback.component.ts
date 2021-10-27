@@ -17,7 +17,7 @@ export class OAuth2CallbackComponent implements OnDestroy {
     this.authService.authenticate('google')
       .pipe(takeUntil(this.destroy$))
       .subscribe((authResult: NbAuthResult) => {
-        if (authResult.isSuccess() && authResult.getRedirect()) {
+        if (authResult.isSuccess() && authResult.getRedirect()) {          
           this.router.navigateByUrl(authResult.getRedirect());
         }
       });

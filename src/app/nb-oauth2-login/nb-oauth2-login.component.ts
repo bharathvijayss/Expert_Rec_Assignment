@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NbAuthOAuth2Token, NbAuthResult, NbAuthService } from '@nebular/auth';
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -13,27 +14,24 @@ export class NbOAuth2LoginComponent  implements OnDestroy {
   token: NbAuthOAuth2Token;
   private destroy$ = new Subject<void>();
 
-  constructor(private authService: NbAuthService) {
+  constructor(private authService: NbAuthService, private router: Router) {
     this.authService.onTokenChange()
       .pipe(takeUntil(this.destroy$))
       .subscribe((token: NbAuthOAuth2Token) => {
         this.token = null;
         if (token && token.isValid()) {
-          this.token = token;
+          this.token = token.getPayload().access_token;
+          localStorage.setItem('accessToken',this.token.toString());
         }
       });
+      
+      if(!(localStorage.accessToken === undefined)){
+        this.router.navigate(["viewProfile"]);
+      }
   }
 
   login() {
     this.authService.authenticate('google')
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((authResult: NbAuthResult) => {
-        localStorage.setItem('token',authResult.toString());
-      });
-  }
-
-  logout() {
-    this.authService.logout('google')
       .pipe(takeUntil(this.destroy$))
       .subscribe((authResult: NbAuthResult) => {
       });
