@@ -3,16 +3,56 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NbCardModule, NbThemeModule, NbLayoutModule } from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
+
+import { HttpClientModule } from '@angular/common/http';
+import { NbOAuth2AuthStrategy, NbAuthModule, NbOAuth2ResponseType } from '@nebular/auth';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { AuthGuard } from './auth-guard.service';
+import { NbOAuth2LoginComponent } from './nb-oauth2-login/nb-oauth2-login.component';
+import { OAuth2CallbackComponent } from './oauth2-callback/oauth2-callback.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ViewProfileComponent,
+    NbOAuth2LoginComponent,
+    OAuth2CallbackComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    NbThemeModule.forRoot({ name: 'default' }),
+    NbLayoutModule,
+    NbEvaIconsModule,
+    NbCardModule,
+    HttpClientModule,
+    NbAuthModule.forRoot({
+      strategies: [
+        NbOAuth2AuthStrategy.setup({
+          name: 'google',
+          clientId:'550118843940-hb386koogq4os0iajim3mskm0fq4ooik.apps.googleusercontent.com',
+          clientSecret: '',
+          authorize: {
+            endpoint: 'https://accounts.google.com/o/oauth2/v2/auth',
+            responseType: NbOAuth2ResponseType.TOKEN,
+            scope: 'https://www.googleapis.com/auth/userinfo.profile',
+            //Need to change redirectURI
+            redirectUri: 'http://localhost:4200/callback', 
+          },
+          redirect: {
+            success: '/viewProfile',
+            failure: null,
+          },
+        })
+      ],
+      forms: {},
+    }), 
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
