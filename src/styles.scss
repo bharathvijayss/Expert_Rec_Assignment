@@ -8,3 +8,12 @@
   @include nb-auth-global();
 };
 /* You can add global styles to this file, and also import other style files */
+
+nb-card-header, nb-card-footer{
+  text-align: center;
+}
+
+nb-card{
+  margin-left:auto; 
+  margin-right:auto; 
+}

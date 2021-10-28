@@ -15,6 +15,7 @@ export class ViewProfileComponent implements OnDestroy, OnInit {
   private destroy$ = new Subject<void>();
   authTokenValue;
   tokenIndex;
+  tokenEndIndex;
   token;
   userObj;
   errorMessage;
@@ -29,8 +30,10 @@ export class ViewProfileComponent implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     this.authTokenValue = localStorage.getItem("auth_app_token");
-    this.tokenIndex = this.authTokenValue.indexOf("access_token");
-    this.token = this.authTokenValue.substr(this.tokenIndex + 17, 163);
+    this.tokenIndex = this.authTokenValue.indexOf("access_token")+17;
+    this.tokenEndIndex = this.authTokenValue.indexOf("\\",this.tokenIndex);
+    this.token = this.authTokenValue.substring(this.tokenIndex,this.tokenEndIndex);
+    // console.log(this.token);
     this.userInfo.fetchUserInfo(this.token).subscribe(
       info => {
         this.userObj = info;

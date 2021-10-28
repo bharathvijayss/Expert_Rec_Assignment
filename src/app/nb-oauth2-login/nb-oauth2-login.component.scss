@@ -1,0 +1,28 @@
+@media only screen and (min-width: 1072px) {
+    #loginCard{
+        width:45%;
+    }
+}
+
+@media only screen and (max-width: 1168px) {
+    #loginCard{
+        width:57%;
+    }
+}
+
+@media only screen and (max-width: 435px) {
+    #loginCard{
+        width:85%;
+    }
+}
+
+ul{
+    list-style-type: none;
+    margin: 0; 
+    padding:0;
+}
+
+#signInButton{
+    background-image: linear-gradient(to bottom right,#3e3ed3,rgb(209, 80, 80)); 
+    color:white;
+}
