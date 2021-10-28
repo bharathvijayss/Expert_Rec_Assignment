@@ -51,7 +51,7 @@ export class ViewProfileComponent implements OnDestroy, OnInit {
 
 
   logout(dialog) {
-    const dialogRef = this.dialogService.open(dialog).onClose
+    const dialogRef = this.dialogService.open(dialog,{closeOnBackdropClick:false}).onClose
       .subscribe(name => {
         if (name === 'Yes') {
           this.authService.logout('google')
