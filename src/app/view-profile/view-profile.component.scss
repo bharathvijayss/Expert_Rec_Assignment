@@ -1,19 +1,29 @@
-
-@media only screen and (min-width: 100px) {
+@media only screen and (min-width: 426px) {
     #loginCard{
-        width:100%;
-    }
-    #popUp{
-        width:100%;
+        width:75%;
     }
 }
 
-@media only screen and (min-width: 340px) {
+@media only screen and (min-width: 700px) {
     #loginCard{
-        width:380px;
-    }
-    #popUp{
-        width:320px;
+        width:52%;
     }
 }
 
+@media only screen and (min-width: 1000px) {
+    #loginCard{
+        width:40%;
+    }
+}
+
+@media only screen and (min-width: 1350px) {
+    #loginCard{
+        width:28%;
+    }
+}
+
+@media only screen and (min-width: 2400px) {
+    #loginCard{
+        width:15%;
+    }
+}
