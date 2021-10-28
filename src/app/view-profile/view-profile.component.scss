@@ -3,11 +3,17 @@
     #loginCard{
         width:100%;
     }
+    #popUp{
+        width:100%;
+    }
 }
 
 @media only screen and (min-width: 340px) {
     #loginCard{
         width:310px;
+    }
+    #popUp{
+        width:320px;
     }
 }
 
