@@ -21,7 +21,8 @@ export class NbOAuth2LoginComponent implements OnDestroy {
       .subscribe((token: NbAuthOAuth2Token) => {
         this.token = null;
         if (token && token.isValid()) {
-          this.token = token.getPayload().access_token;
+          this.token = token;
+          // this.token = token.getPayload().access_token;
         }
       });
 
