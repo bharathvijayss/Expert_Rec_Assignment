@@ -4,13 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbCardModule, NbThemeModule, NbLayoutModule } from '@nebular/theme';
+import { NbCardModule, NbThemeModule, NbLayoutModule, NbButtonModule, NbListModule, NbUserModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-
+import { NbIconModule } from '@nebular/theme';
 import { HttpClientModule } from '@angular/common/http';
 import { NbOAuth2AuthStrategy, NbAuthModule, NbOAuth2ResponseType, NbAuthJWTToken } from '@nebular/auth';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
-import { AuthGuard } from './auth-guard.service';
+import { AuthGuard } from './services/auth-guard.service';
 import { NbOAuth2LoginComponent } from './nb-oauth2-login/nb-oauth2-login.component';
 import { OAuth2CallbackComponent } from './oauth2-callback/oauth2-callback.component';
 
@@ -28,6 +28,10 @@ import { OAuth2CallbackComponent } from './oauth2-callback/oauth2-callback.compo
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
     NbEvaIconsModule,
+    NbIconModule,
+    NbListModule,
+    NbUserModule,
+    NbButtonModule,
     NbCardModule,
     HttpClientModule,
     NbAuthModule.forRoot({

@@ -4,12 +4,13 @@ import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 
+
 @Component({
   selector: 'app-nb-oauth2-login',
   templateUrl: './nb-oauth2-login.component.html',
   styleUrls: ['./nb-oauth2-login.component.scss']
 })
-export class NbOAuth2LoginComponent  implements OnDestroy {
+export class NbOAuth2LoginComponent implements OnDestroy {
 
   token: NbAuthOAuth2Token;
   private destroy$ = new Subject<void>();
@@ -23,10 +24,10 @@ export class NbOAuth2LoginComponent  implements OnDestroy {
           this.token = token.getPayload().access_token;
         }
       });
-      
-      if(!(localStorage["auth_app_token"] === undefined)){
-        this.router.navigate(["viewProfile"]);
-      }
+
+    if (!(localStorage["auth_app_token"] === undefined)) {
+      this.router.navigate(["viewProfile"]);
+    }
   }
 
   login() {

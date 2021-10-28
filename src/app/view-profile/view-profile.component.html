@@ -1,5 +1,18 @@
-<nb-card>
+<nb-card accent="primary"  style="width:27vw; margin-left:auto; margin-right:auto;">
+    <nb-card-header style="text-align: center;">
+        <nb-icon icon="person"></nb-icon>PROFILE INFORMATION
+    </nb-card-header>
     <nb-card-body>
-        <button nbButton status="warning" (click)="logout()">Sign Out</button>
+        <nb-user size="giant" 
+        name={{name}}
+        title={{email}}
+        picture={{profilePhoto}}>
+        </nb-user>
     </nb-card-body>
+
+    <nb-card-footer  style="text-align: center;">
+        <button nbButton outline  status="primary" (click)="logout()">
+          <nb-icon icon="log-out"></nb-icon>LogOut
+        </button>
+      </nb-card-footer>
 </nb-card>

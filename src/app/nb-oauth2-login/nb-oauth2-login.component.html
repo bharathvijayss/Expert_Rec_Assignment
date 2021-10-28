@@ -1,5 +1,25 @@
-<nb-card>
-    <nb-card-body>
-      <button nbButton status="success" *ngIf="!token" (click)="login()">Sign In with Google</button>
-    </nb-card-body>
+<nb-card accent="primary" style="width:35%; margin-left:auto; margin-right:auto;">
+  <nb-card-header style="text-align: center;  color:black;">
+    <span>INSTRUCTIONS FOR GOOGLE SIGN IN</span>
+  </nb-card-header>
+  <nb-card-body>
+    <ul type="none" style="margin: 0; padding:0;">
+      <li>
+        <nb-icon icon="arrow-right"></nb-icon>Click on the button below to continue to the Regular Sign In page of the
+        Google.
+      </li>
+      <li>
+        <nb-icon icon="arrow-right"></nb-icon>Provide consent with your email and password to continue Signing-In.
+      </li>
+      <li>
+        <nb-icon icon="arrow-right"></nb-icon>Check your publicly available Information afterwards.
+      </li>
+    </ul>
+  </nb-card-body>
+  <nb-card-footer style="text-align: center;">
+    <button style="background-image: linear-gradient(to bottom right,#5e5ee4,rgb(231, 106, 106)); color:white;" nbButton
+      outline status="primary" (click)="login()">
+      <nb-icon icon="google-outline"></nb-icon>Sign In with Google
+    </button>
+  </nb-card-footer>
 </nb-card>
