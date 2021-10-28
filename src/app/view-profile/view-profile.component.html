@@ -1,3 +1,29 @@
+<ng-template #dialog let-ref="dialogRef">
+    <nb-card style="width:320px;">
+        <nb-card-header>Do you want to Logout?</nb-card-header>
+        <nb-card-body>
+            <ul>
+                <li>
+                    <nb-icon icon="arrow-right"></nb-icon>
+                    Press YES to Confirm Logout
+                </li>
+                <li>
+                    <nb-icon icon="arrow-right"></nb-icon>
+                    Press NO to Stay Back
+                </li>
+            </ul>
+        </nb-card-body>
+        <nb-card-footer>
+            <button nbButton outline status="primary" size="small" (click)="ref.close('No')">
+                <nb-icon icon="close-circle"></nb-icon>NO
+            </button>
+            <button nbButton status="danger" size="small" style="margin-left: 15px;" (click)="ref.close('Yes')">
+                <nb-icon icon="checkmark-circle-2"></nb-icon>YES
+            </button>
+        </nb-card-footer>
+    </nb-card>
+</ng-template>
+
 <nb-card accent="primary" id="loginCard">
     <nb-card-header>
         <nb-icon icon="person"></nb-icon>PROFILE INFORMATION
@@ -9,9 +35,9 @@
     </nb-card-body>
 
     <nb-card-footer>
-        <button nbButton outline status="primary" (click)="logout()"
-        nbTooltip="Click this button to logout from the website" 
-        nbTooltipPlacement="bottom" nbTooltipStatus="primary">
+        <button nbButton outline status="primary" (click)="logout(dialog)"
+            nbTooltip="Click this button to logout from the website" nbTooltipPlacement="bottom"
+            nbTooltipStatus="primary">
             <nb-icon icon="log-out"></nb-icon>LogOut
         </button>
     </nb-card-footer>
