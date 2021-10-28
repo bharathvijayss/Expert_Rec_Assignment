@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
+import { NbToastrService, NbComponentStatus } from '@nebular/theme';
+
 @Component({
   selector: 'app-oauth2-callback',
   templateUrl: './oauth2-callback.component.html',

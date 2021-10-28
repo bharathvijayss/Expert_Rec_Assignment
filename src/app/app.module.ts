@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbCardModule, NbThemeModule, NbLayoutModule, NbButtonModule, NbListModule, NbUserModule } from '@nebular/theme';
+import { NbCardModule, NbThemeModule, NbLayoutModule, NbButtonModule, NbListModule, NbUserModule, NbSpinnerModule, NbTooltipModule, NbToastrModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbIconModule } from '@nebular/theme';
 import { HttpClientModule } from '@angular/common/http';
@@ -31,8 +31,11 @@ import { OAuth2CallbackComponent } from './oauth2-callback/oauth2-callback.compo
     NbIconModule,
     NbListModule,
     NbUserModule,
+    NbSpinnerModule,
     NbButtonModule,
     NbCardModule,
+    NbToastrModule.forRoot(),
+    NbTooltipModule,
     HttpClientModule,
     NbAuthModule.forRoot({
       strategies: [

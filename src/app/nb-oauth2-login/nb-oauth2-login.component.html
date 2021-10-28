@@ -19,7 +19,9 @@
     </ul>
   </nb-card-body>
   <nb-card-footer>
-    <button size="small" status="primary" nbButton outline (click)="login()" id='signInButton'>
+    <button size="small" status="primary" nbButton outline (click)="login()" 
+    id='signInButton' nbTooltip="Click this button to login with Google Account" 
+    nbTooltipPlacement="bottom" nbTooltipStatus="primary">
       <nb-icon icon="google"></nb-icon>Sign In with Google
     </button>
   </nb-card-footer>

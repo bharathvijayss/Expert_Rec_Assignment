@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { UserInfoService } from '../services/user-info.service';
+import { NbToastrService, NbComponentStatus } from '@nebular/theme';
 
 @Component({
   selector: 'app-view-profile',
@@ -24,7 +25,7 @@ export class ViewProfileComponent implements OnDestroy, OnInit {
   profilePhoto;
 
   constructor(private authService: NbAuthService, private router: Router,
-    private userInfo: UserInfoService) {
+    private userInfo: UserInfoService, private toastrService: NbToastrService) {
 
   }
 
@@ -33,16 +34,16 @@ export class ViewProfileComponent implements OnDestroy, OnInit {
     this.tokenIndex = this.authTokenValue.indexOf("access_token")+17;
     this.tokenEndIndex = this.authTokenValue.indexOf("\\",this.tokenIndex);
     this.token = this.authTokenValue.substring(this.tokenIndex,this.tokenEndIndex);
-    // console.log(this.token);
     this.userInfo.fetchUserInfo(this.token).subscribe(
       info => {
         this.userObj = info;
         this.name = this.userObj.name;
         this.email = this.userObj.email;
         this.profilePhoto = this.userObj.picture;
+        this.showToast(this.userObj.given_name,'bottom-end','primary');
       },
       error => this.errorMessage = <any>error
-    );
+    );    
   }
 
 
@@ -50,7 +51,6 @@ export class ViewProfileComponent implements OnDestroy, OnInit {
     this.authService.logout('google')
       .pipe(takeUntil(this.destroy$))
       .subscribe((authResult: NbAuthResult) => {
-        // localStorage.clear();
         this.router.navigate(["login"]);
       });
   }
@@ -58,6 +58,15 @@ export class ViewProfileComponent implements OnDestroy, OnInit {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+
+  showToast(givenName,position,status: NbComponentStatus) {
+    this.toastrService.show(
+      `Login with Google Successfull`,
+      `Welcome Back ${givenName} !!`,
+      {status,position,duration:6000},
+      );
   }
 
 }
